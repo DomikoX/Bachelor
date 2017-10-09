@@ -1,0 +1,20 @@
+<h3>File Explorer</h3>
+
+<button *ngIf="!device.Records"type="button" class="btn btn-success" (click)="explore()">Explore device</button>
+<file-upload [devices]="[device]" [toOpenFolder]="device.Records != null"></file-upload>
+
+<table *ngIf="device.Records" class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Date</th>
+        <th>Download</th>
+    </tr>
+    <tr *ngFor="let record of device.Records; let i = index" (dblclick)="open(i)">
+        <td>{{record.Name}}</td>
+        <td>{{record.Size}}</td>
+        <td>{{record.Date}}</td>
+        <td><button *ngIf="record.Size > 0 " type="button" class="btn btn-success" (click)="dwn(record.Name)"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></button></td>
+    </tr>
+
+</table>

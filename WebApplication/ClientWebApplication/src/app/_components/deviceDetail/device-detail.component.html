@@ -1,0 +1,42 @@
+<div *ngIf="device">
+    <h2>{{device.Name}}  <span *ngIf="!device.Online">(Offline)</span></h2>
+
+    <h6>( {{device.Id}}) </h6>
+
+    <div>
+        <label>Cpu: </label>
+        {{device.CpuInfo}}
+    </div>
+    <div>
+        <label>Os: </label>
+        {{device.OsInfo}}
+    </div>
+
+    <div *ngIf="device.Online">
+        <button type="button" class="btn btn-success" (click)="startUsage()">Show usage</button>
+        <button type="button" class="btn btn-danger" (click)="stopUsage()">Hide Usage</button>
+
+
+        <div *ngIf="device.LastUsageTime">
+            <div>
+                <label>Cpu usage: </label>
+                {{device.CpuUsage | number : '1.2-2'}}%
+            </div>
+            <div>
+                <label>Ram usage: </label>
+                {{device.RamUsage[0]/1024 | number : '1.2-2' }} of {{device.RamUsage[1]/1024 | number : '1.2-2'}}
+            </div>
+            <h6>Last usage update {{device.LastUsageTime | date:'mediumTime' }}</h6>
+
+        </div>
+
+        <screen [devices]=[device]></screen>
+        <operation class="row" [devices]=[device]></operation>
+        <messages [devices]="[device]"></messages>
+
+
+        <explorer [device]="device"></explorer>
+
+        <processes [device]="device"></processes>
+    </div>
+</div>

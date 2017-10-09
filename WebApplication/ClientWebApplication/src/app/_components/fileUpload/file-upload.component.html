@@ -1,0 +1,19 @@
+<form name="form" (ngSubmit)="f.form.valid && upload()" #f="ngForm" novalidate>
+
+    <div class="form-group">
+        <label for="file">File input</label>
+        <input type="file" id="file" (change)="onChange($event)">
+
+        <div class="progress" *ngIf="fileToUpload">
+            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                 [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"
+                 style="min-width: 2em;" [style.width]="(progress/100)*100 + '%'">
+                {{progress}}%
+            </div>
+        </div>
+        <button type="submit" class="btn btn-default">Upload to {{devices.length > 1 ? "Downloads" : "Open folder"}}   </button>
+        </div>
+</form>
+
+
+

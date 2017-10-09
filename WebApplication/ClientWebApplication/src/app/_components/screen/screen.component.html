@@ -1,0 +1,12 @@
+<h4>Screen </h4>
+
+<button type="button" class="btn btn-success" (click)="startScreen()">Show Screen</button>
+<button type="button" class="btn btn-danger" (click)="stopScreen()">Hide Screen</button>
+
+<div>
+    <div *ngFor="let device of devices" >
+
+        <img  *ngIf="device.LastScreen"  [src]="device.LastScreen" />
+    </div>
+
+</div>

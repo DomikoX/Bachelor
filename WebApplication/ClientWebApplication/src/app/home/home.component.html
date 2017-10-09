@@ -1,0 +1,22 @@
+﻿
+<div class="row">
+    <div class="col-md-8"> Remote PC control </div>
+
+    <div class="col-md-4"> <a *ngIf="webApiService.isAdmin()"  [routerLink]="['/admin']" class="btn btn-link">Admin</a>   {{webApiService.username}} (<a  [routerLink]="['/login']" >logout</a>)</div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <h4 (click)="webApiService.getOnlineDeviceList()"> Online Devices</h4>
+        <ul *ngIf="devices">
+            <li  *ngFor="let device of devices" (click)="selectDevice(device)" [class.selected]="device === selectedDevice"  [class.online]="device.Online" [class.multipleSelected]="device.IsSelected">  <span> {{device.Name}}   <input *ngIf="device.Online" [(ngModel)]="device.IsSelected" (change)="addDevice(device)" type="checkbox"/></span> </li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+
+
+
+        <device-detail *ngIf="multipleSelectedDevices.length <= 1" [device]="selectedDevice"></device-detail>
+        <multiple-device *ngIf="multipleSelectedDevices.length > 1" [devices]="multipleSelectedDevices"></multiple-device>
+    </div>
+</div>

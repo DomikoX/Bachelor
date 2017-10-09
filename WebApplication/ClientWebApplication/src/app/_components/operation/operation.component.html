@@ -1,0 +1,17 @@
+<h4>Do Operation</h4>
+
+
+<form class="form-inline">
+    <div class="form-group">
+        <select class="form-control" [(ngModel)]="operation" name="operation">
+            <option value="Logout">Logout</option>
+            <option value="Restart">Restart</option>
+            <option value="ShutDown">Turn Off</option>
+            <option value="Sleep">Sleep</option>
+            <option value="Lock">Lock</option>
+        </select>
+
+    </div>
+    <button type="button" class="btn btn-danger" (click)="doOperation()">Do it!</button>
+
+</form>

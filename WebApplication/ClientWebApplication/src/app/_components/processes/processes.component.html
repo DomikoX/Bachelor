@@ -1,0 +1,26 @@
+<h3>Processes</h3>
+
+<button type="button" class="btn btn-success" (click)="getProcesses()">Get Processes</button>
+<button *ngIf="device.Processes" type="button" class="btn btn-danger" (click)="device.Processes = null">Close
+    Processes
+</button>
+
+
+<table *ngIf="device.Processes" class="table table-striped table-bordered table-hover table-condensed">
+    <tr>
+        <th>Kill</th>
+        <th>PID</th>
+        <th>Name</th>
+        <th>Title</th>
+
+    </tr>
+    <tr *ngFor="let process of device.Processes">
+        <th>
+            <button type="button" class="btn btn-danger" (click)="kill(process.Pid)">Kill</button>
+        </th>
+        <td>{{process.Pid}}</td>
+        <td>{{process.Name}}</td>
+        <td>{{process.Title}}</td>
+    </tr>
+
+</table>

@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.multipleSelected{
+    background-color: orange;
+}
+
+.selected{
+    background-color: lightgrey;
+}
+
+
+
+li{
+    padding: 2px 5px ;
+    border-radius:  5px;
+    color: red;
+}
+.online{
+    color: green;
+}
+
+li span {
+    color:black;
+}
+
+
+li:hover{
+    cursor:pointer;
+}
+
+
+/*FORM*/
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+}
